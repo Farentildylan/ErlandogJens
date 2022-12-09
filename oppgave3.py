@@ -5,6 +5,8 @@ import oppgave2
 plt.style.use("ggplot")
 plt.grid()
 
+#Kryss ut plot så spretter plot til neste oppgave opp. 
+
 #Oppgave 1 plotter den første grafen
 csv_data_sorted = oppgave1.CSV_sorted("Befolkning.csv")
 csv_data_sorted.plot()
@@ -20,3 +22,5 @@ json_data_sorted.plot()
 plt.subplot(2, 3, json_data_sorted.plot_amount+1)
 csv_data_sorted.plot()
 plt.show()
+
+
