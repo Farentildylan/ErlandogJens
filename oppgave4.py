@@ -11,6 +11,8 @@ class SortertData:
         self.xverdier = []
         self.nyxverdier = []
 
+    #Her leser vi filen og lager tre lister av dem som strings
+    #Derretter fjerner vi overskriftene slik at vi for lister som kan gjøres til int uten problem
         with open(self.filnavn, encoding="utf-8-sig") as fil:
             filinnhold = csv.reader(fil, delimiter=";")
             for _filinnhold in filinnhold: 
@@ -24,6 +26,8 @@ class SortertData:
                     _filinnhold.pop(0)
                     self.xverdier = _filinnhold
     
+    #Denne konverterer listene fra lister med strings til lister med integer
+    #Dette gjør at vi kan flytte grafene til høyre og venstre i forhold til hverandre
     def konverter(self):
         self.xverdier = [int(x) for x in self.xverdier]
         self.nyxverdier = self.xverdier
@@ -32,6 +36,7 @@ class SortertData:
         self.yverdierekteskap = [int(x) for x in self.yverdierekteskap]
         self.yverdierskilsmisse = [int(x) for x in self.yverdierskilsmisse]
     
+    #Skriver ut grafen som histogrammer sammen
     def skrivUt(self):
         plt.bar(self.xverdier, self.yverdierekteskap, width=4)
         plt.bar(self.nyxverdier, self.yverdierskilsmisse, width=4)
@@ -39,7 +44,8 @@ class SortertData:
         plt.ylabel("Skilsmisser og Inngåttekteskap")
         plt.legend(["Ingåtte ekteskap","Skilsmisser"])
         plt.show()
-        
+
+#Henter filene og skriver ut grafene ved hjelp av objektet        
 sortertData = SortertData(filnavn)
 sortertData.konverter()
 sortertData.skrivUt()
